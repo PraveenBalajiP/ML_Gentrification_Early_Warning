@@ -1,4 +1,5 @@
-"""Step 4 (optional): analogues of the paper's Figure 1 (income-distribution shift) and Figure 2 (tract map)."""
+"""Step 4: generate the paper's analogue figures and confusion-matrix visualization."""
+import re
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -7,6 +8,45 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from config import *
 from common import income_bins, income_H
+
+
+def confusion_matrix_figure():
+    """Plot the 2x2 matrices recorded by step 3 as annotated heatmaps."""
+    text = (OUT / "confusion_matrices.txt").read_text()
+    matrices = []
+    for block in text.strip().split("\n\n"):
+        lines = block.splitlines()
+        if len(lines) < 3:
+            continue
+        values = [int(value) for value in re.findall(r"\d+", " ".join(lines[1:]))]
+        if len(values) != 4:
+            raise ValueError(f"Expected four values in confusion-matrix block: {lines[0]}")
+        response, setting, _ = lines[0].split(" | ", 2)
+        matrices.append((response.replace("Response: ", ""), setting,
+                         np.array(values).reshape(2, 2)))
+
+    if not matrices:
+        raise ValueError(f"No confusion matrices found in {OUT / 'confusion_matrices.txt'}")
+
+    fig, axes = plt.subplots(2, 2, figsize=(10, 8), squeeze=False)
+    for ax, (response, setting, matrix) in zip(axes.flat, matrices):
+        image = ax.imshow(matrix, cmap="Blues")
+        for row in range(2):
+            for col in range(2):
+                value = matrix[row, col]
+                ax.text(col, row, str(value), ha="center", va="center",
+                        color="white" if value > matrix.max() * 0.55 else "black",
+                        fontsize=13, fontweight="bold")
+        ax.set_xticks((0, 1), labels=("Predicted 0", "Predicted 1"))
+        ax.set_yticks((0, 1), labels=("True 0", "True 1"))
+        ax.set_title(f"{response}\n{setting}", fontsize=10)
+        fig.colorbar(image, ax=ax, shrink=0.8, label="Count")
+
+    fig.suptitle("Random Forest confusion matrices", fontsize=14)
+    fig.tight_layout()
+    fig.savefig(OUT / "confusion_matrices.png", dpi=200)
+    plt.close(fig)
+    print("Saved confusion_matrices.png")
 
 
 def fig1():
@@ -43,5 +83,6 @@ def fig2():
 
 
 if __name__ == "__main__":
+    confusion_matrix_figure()
     fig1()
     fig2()

@@ -26,7 +26,7 @@ No Census API key is needed (nothing calls the API).
 data/downloads/   <- you put the 14 Census .zip files here
 data/raw/         <- auto-filled: YYYY_TABLE.csv + tiger_tracts/ (shapefile)
 data/processed/   <- dataset.csv, feature_labels.csv
-outputs/          <- results.csv, feature_importance.png, confusion_matrices.txt, best_params.json, figures
+outputs/          <- results.csv, feature_importance.png, confusion_matrices.txt/.png, best_params.json, figures
 src/              <- config.py  common.py  01..04 scripts  run_all.py
 ```
 
@@ -78,6 +78,7 @@ all four years and `S2503` (income bins) for 2012 and 2016 as well as 2010-2011.
 | Table 2 hyper-parameters (RF n=125, p=18; XGB 0.25 / 4 / 25; C=0.005) | also run with exactly these settings -> `results.csv` column `Hyperparameters = paper Table 2` |
 | Table 3 confusion matrix (RF, income response) | `outputs/confusion_matrices.txt` |
 | Figure 3/5 XGBoost importances | `outputs/feature_importance.png`, `xgb_top_features.csv` |
+| Confusion-matrix visualization | `04_figures.py` -> `confusion_matrices.png` |
 | Figure 1 / Figure 2 | `04_figures.py` -> `figure1_income_shift.png`, `figure2_tract_map.png` |
 
 Run times (standard mode): a few minutes on a normal laptop; `--fast` ~1 min; `--full` (paper's complete grids) longest.
