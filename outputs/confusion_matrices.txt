@@ -1,0 +1,15 @@
+Response: change in monthly cost of housing | grid search | Random Forest confusion matrix (rows=true 0/1, cols=pred 0/1)
+[[259  13]
+ [ 97  29]]
+
+Response: change in monthly cost of housing | paper Table 2 | Random Forest confusion matrix (rows=true 0/1, cols=pred 0/1)
+[[253  19]
+ [105  21]]
+
+Response: change in income distribution | grid search | Random Forest confusion matrix (rows=true 0/1, cols=pred 0/1)
+[[  4 146]
+ [  4 244]]
+
+Response: change in income distribution | paper Table 2 | Random Forest confusion matrix (rows=true 0/1, cols=pred 0/1)
+[[  4 146]
+ [  4 244]]

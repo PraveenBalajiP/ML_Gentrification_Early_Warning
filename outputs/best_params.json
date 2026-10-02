@@ -1,0 +1,30 @@
+{
+  "y_cost": {
+    "RandomForest": {
+      "max_features": 14,
+      "n_estimators": 50
+    },
+    "XGBoost": {
+      "learning_rate": 0.15000000000000002,
+      "max_depth": 7,
+      "reg_lambda": 200
+    },
+    "L1Logit": {
+      "C": 0.037500000000000006
+    }
+  },
+  "y_income": {
+    "RandomForest": {
+      "max_features": 18,
+      "n_estimators": 125
+    },
+    "XGBoost": {
+      "learning_rate": 0.5,
+      "max_depth": 4,
+      "reg_lambda": 100
+    },
+    "L1Logit": {
+      "C": 0.01
+    }
+  }
+}
