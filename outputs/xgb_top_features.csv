@@ -1,0 +1,11 @@
+column,importance,label
+lag_cost,0.016990202,Spatial lag - housing cost change (2010-11)
+B25085_017E_diff,0.013503097,"B25085: $150,000 to $174,999 (Total) [chg]"
+S2503_C02_043E_diff,0.011976525,"S2503: 20 to 29 percent ($50,000 To $74,999) [chg]"
+S2502_C03_024E_diff,0.01139368,S2502: Moved in 1980 to 1989 (Year Householder Moved Into ) [chg]
+S2503_C01_028E_diff,0.009878865,S2503: Median (dollars) (Monthly Housing Costs) [chg]
+S2503_C02_028E_diff,0.0095705725,S2503: Median (dollars) (Monthly Housing Costs) [chg]
+DP03_0021E_diff,0.008828015,DP03: Public transportation (excluding taxic (Commuting To Work) [chg]
+S2502_C02_017E_diff,0.00840859,S2502: 85 years and over (Age Of Householder) [chg]
+S2503_C03_012E_diff,0.008219731,"S2503: $150,000 or more (Household Income In The Past) [chg]"
+DP03_0022E_diff,0.007607289,DP03: Walked (Commuting To Work) [chg]
